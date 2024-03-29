@@ -1,47 +1,35 @@
 #include "binary_trees.h"
+#include <stdlib.h>
 
-int heap_extract(heap_t **root);
-void recurse_extract(heap_t *tree);
-heap_t *max(heap_t *tree);
 /**
- * heap_extract - Extracts the root node of a Max Binary Heap.
+ * tree_height - measures the height of a binary tree
+ * @tree: pointer to the root node of the tree to measure the height
  *
- * @root: A double pointer to the root node of heap.
- *
- * Return: The value stored in the root node.
+ * Return: Height or 0 if tree is NULL
  */
-int heap_extract(heap_t **root)
+size_t tree_height(const heap_t *tree)
 {
-	int value;
+	size_t height_l = 0;
+	size_t height_r = 0;
 
-	if (!*root)
+	if (!tree)
 		return (0);
-	value = (*root)->n;
-	if (!(*root)->left)
-	{
-		value = (*root)->n;
-		free(*root);
-		*root = NULL;
-		return (value);
-	}
-	recurse_extract(*root);
-	return (value);
-}
 
-/**
- * recurse_extract - Recursively extracts the max from the tree.
- *
- * @tree: The pointer to the root of the tree.
- */
-void recurse_extract(heap_t *tree)
-{
-	heap_t *sub_max, *right_max = NULL;
+	if (tree->left)
+		height_l = 1 + tree_height(tree->left);
 
-	if (!tree->left)
-		return;
-	sub_max = max((tree)->left);
 	if (tree->right)
-		right_max = max(tree->right);
-	if (right_max && right_max->n > sub_max->n)
-		sub_max = right_max;
+		height_r = 1 + tree_height(tree->right);
+
+	if (height_l > height_r)
+		return (height_l);
+	return (height_r);
+}
+/**
+ * tree_size_h - measures the sum of heights of a binary tree
+ * @tree: pointer to the root node of the tree to measure the height
+ *
+ * Return: Height or 0 if tree is NULL
+ */
+size_t tree_size_h(const binary_tree_t *tree)
 

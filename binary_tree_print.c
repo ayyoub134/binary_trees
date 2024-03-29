@@ -32,4 +32,22 @@ static int print_t(const binary_tree_t *tree, int offset, int depth, char **s)
 	{
 		for (i = 0; i < width + right; i++)
 			s[depth - 1][offset + left + width / 2 + i] = '-';
+		s[depth - 1][offset + left + width / 2] = '.';
+	}
+	else if (depth && !is_left)
+	{
+		for (i = 0; i < left + width; i++)
+			s[depth - 1][offset - width / 2 + i] = '-';
+		s[depth - 1][offset + left + width / 2] = '.';
+	}
+	return (left + width + right);
+}
+
+/**
+ * _height - Measures the height of a binary tree
+ *
+ * @tree: Pointer to the node to measures the height
+ *
+ * Return: The height of the tree starting at @node
+ */
 

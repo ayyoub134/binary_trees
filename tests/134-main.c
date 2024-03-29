@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "binary_trees.h"
+#include "../binary_trees.h"
 
 /**
  * print_array - Prints an array of integers
@@ -10,17 +10,17 @@
  */
 void print_array(const int *array, size_t size)
 {
-	size_t i;
+    size_t i;
 
-	i = 0;
-	while (array && i < size)
-	{
-		if (i > 0)
-			printf(", ");
-		printf("%d", array[i]);
-		++i;
-	}
-	printf("\n");
+    i = 0;
+    while (array && i < size)
+    {
+        if (i > 0)
+            printf(", ");
+        printf("%d", array[i]);
+        ++i;
+    }
+    printf("\n");
 }
 
 /**
@@ -30,6 +30,9 @@ void print_array(const int *array, size_t size)
  */
 int main(void)
 {
-	heap_t *tree;
-	int array[] = {
+    heap_t *tree;
+    int array[] = {
+        79, 47, 68, 87, 84, 91, 21, 32, 34, 2,
+        20, 22, 98, 1, 62, 95
+    };
 

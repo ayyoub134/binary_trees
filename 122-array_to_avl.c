@@ -23,4 +23,11 @@ avl_t *array_to_avl(int *array, size_t size)
 				break;
 		}
 		if (j == i)
+		{
+			if (avl_insert(&tree, array[i]) == NULL)
+				return (NULL);
+		}
+	}
 
+	return (tree);
+}
